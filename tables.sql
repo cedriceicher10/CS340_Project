@@ -110,8 +110,8 @@ CREATE TABLE `player` (
 );
 
 /*Adding data to player table*/
-INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, 1991-07-08, 'Netherlands', 2),
-(2, 2, 'Roberto', 'Firmino', 'ST', 46, 16, 8, 71, 1991-10-02, 'Brazil', 1),
-(3, 1, 'Sergio', 'Aguero', 'ST', 40, 27, 8, 68, 1988-06-02, 'Argentina', 3),
-(4, 5, 'Lionel', 'Messi', 'ST/RW', 44, 48, 18, 67, 1987-06-24, 'Argentina', 1);
+INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, '1991-07-08', 'Netherlands', 2),
+(2, 2, 'Roberto', 'Firmino', 'ST', 46, 16, 8, 71, '1991-10-02', 'Brazil', 1),
+(3, 1, 'Sergio', 'Aguero', 'ST', 40, 27, 8, 68, '1988-06-02', 'Argentina', 3),
+(4, 5, 'Lionel', 'Messi', 'ST/RW', 44, 48, 18, 67, '1987-06-24', 'Argentina', 1);
 
