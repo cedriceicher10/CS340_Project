@@ -1,6 +1,6 @@
 USE cs340_gorterl;
 
-DROP TABLE IF EXISTS `stadium`;
+--DROP TABLE IF EXISTS `stadium`;
 CREATE TABLE `stadium` (
     `stadiumId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
@@ -24,7 +24,7 @@ INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097,
 (11, 'Stadio Atleti Azzurri d Italia', 'Bergamo, italy', 21300, 'Grass', 1928),
 (12, 'San Siro', 'Milan, Italy', 80018, 'GrassMaster', 1926);
 
-DROP TABLE IF EXISTS `team`;
+--DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
     `teamId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
@@ -50,7 +50,7 @@ INSERT INTO `team` VALUES (1, 'Manchester City', 'Manchester', 1, 1, 38, 98),
 (11, 'Atalanta B.C.', 'Bergamo, Italy', 11, 3, 38, 69),
 (12, 'Football Club Internazionale Milan', 'Milan, Italy', 12, 4, 38, 69);
 
-DROP TABLE IF EXISTS `league`;
+--DROP TABLE IF EXISTS `league`;
 CREATE TABLE `league` (
     `leagueId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
@@ -67,7 +67,7 @@ INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
 (4, 'UEFA Champions League', 'Europe', 2, 13),
 (5, 'UEFA Europa League', 'Europe', 3, 15);
 
-DROP TABLE IF EXISTS `sponsor`;
+--DROP TABLE IF EXISTS `sponsor`;
 CREATE TABLE `sponsor` (
     `sponsorId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
@@ -83,7 +83,7 @@ INSERT INTO `sponsor` VALUES (1, 'Adidas', 24435363840),
 (6, 'Umbro', NULL),
 (7, 'Mizuno', 1600000000);
 
-DROP TABLE IF EXISTS `player`;
+--DROP TABLE IF EXISTS `player`;
 CREATE TABLE `player` (
     `playerId` int NOT NULL AUTO_INCREMENT,
     `teamId` int,
