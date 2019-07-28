@@ -1,6 +1,5 @@
 USE cs340_gorterl;
 
-ALTER TABLE `team` DISABLE KEYS;
 DROP TABLE IF EXISTS `stadium`;
 CREATE TABLE `stadium` (
     `stadiumId` int NOT NULL AUTO_INCREMENT,
@@ -11,7 +10,6 @@ CREATE TABLE `stadium` (
     `year` int,
     PRIMARY KEY (`stadiumId`)
 );
-ALTER TABLE `team` ENABLE KEYS;
 
 INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097, 'GrassMaster', 2002),
 (2, 'Anfield', 'Liverpool, England', 54074, 'GrassMaster', 1884),
