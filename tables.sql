@@ -1,5 +1,29 @@
 USE cs340_gorterl;
 
+DROP TABLE IF EXISTS `stadium`;
+CREATE TABLE `stadium` (
+    `stadiumId` int NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL,
+    `city` varchar(255) NOT NULL,
+    `capacity` int NOT NULL,
+    `pitch` varchar(255),
+    `year` int,
+    PRIMARY KEY (`stadiumId`)
+);
+
+INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097, 'GrassMaster', 2002)
+(2, 'Anfield', 'Liverpool, England', 54074, 'GrassMaster', 1884),
+(3, 'Stamford Bridge', 'London, England', 41631, 'GrassMaster', 1876),
+(4, 'Tottenham Hotspur Stadium', 'London, England', 62062, 'GrassMaster', 2019)
+(5, 'Camp Nou', 'Barcelona, Spain', 99354, 'GrassMaster', 1957),
+(6, 'Wanda Metropolitano', 'Madrid, Spain', 67829, 'Grass', 1993),
+(7, 'Santiago Bernabeu Stadium', 'Madrid, Spain,' 81044, 'Mixto Hybrid Grass Technology', 1947),
+(8, 'Mestalla Stadium', 'Valencia, Spain', 50500, 'Grass/Sand', 1916),
+(9, 'Allianz Stadium', 'Turin, Italy', 41507, 'Grass', 2011),
+(10, 'Stadio San Paolo', 'Naples, Italy', 55000, 'Grass', 1959),
+(11, 'Stadio Atleti Azzurri d Italia', 'Bergamo, italy', 21300, 'Grass', 1928),
+(12, 'San Siro', 'Milan, Italy', 80018, 'GrassMaster', 1926);
+
 DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
     `teamId` int NOT NULL AUTO_INCREMENT,
@@ -26,29 +50,38 @@ INSERT INTO `team` VALUES (1, 'Manchester City', 'Manchester', 1, 1, 38, 98),
 (11, 'Atalanta B.C.', 'Bergamo, Italy', 11, 3, 38, 69),
 (12, 'Football Club Internazionale Milan', 'Milan, Italy', 12, 4, 38, 69);
 
-DROP TABLE IF EXISTS `stadium`;
-CREATE TABLE `stadium` (
-    `stadiumId` int NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `league`;
+CREATE TABLE `league` (
+    `leagueId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
-    `city` varchar(255) NOT NULL,
-    `capacity` int NOT NULL,
-    `pitch` varchar(255),
-    `year` int,
-    PRIMARY KEY (`stadiumId`)
+    `location` varchar(255) NOT NULL,
+    `champ` int NOT NULL,
+    `totalGames` int(40) NOT NULL,
+    PRIMARY KEY (`leagueId`),
+    FOREIGN KEY (`champ`) REFERENCES `team`(`teamId`)
 );
 
-INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097, 'GrassMaster', 2002)
-(2, 'Anfield', 'Liverpool, England', 54074, 'GrassMaster', 1884),
-(3, 'Stamford Bridge', 'London, England', 41631, 'GrassMaster', 1876),
-(4, 'Tottenham Hotspur Stadium', 'London, England', 62062, 'GrassMaster', 2019)
-(5, 'Camp Nou', 'Barcelona, Spain', 99354, 'GrassMaster', 1957),
-(6, 'Wanda Metropolitano', 'Madrid, Spain', 67829, 'Grass', 1993),
-(7, 'Santiago Bernabeu Stadium', 'Madrid, Spain,' 81044, 'Mixto Hybrid Grass Technology', 1947),
-(8, 'Mestalla Stadium', 'Valencia, Spain', 50500, 'Grass/Sand', 1916),
-(9, 'Allianz Stadium', 'Turin, Italy', 41507, 'Grass', 2011),
-(10, 'Stadio San Paolo', 'Naples, Italy', 55000, 'Grass', 1959),
-(11, 'Stadio Atleti Azzurri d Italia', 'Bergamo, italy', 21300, 'Grass', 1928),
-(12, 'San Siro', 'Milan, Italy', 80018, 'GrassMaster', 1926);
+INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
+(2, 'La Liga', 'Spain', 5, 38),
+(3, 'Serie A', 'Italy', 9, 38),
+(4, 'UEFA Champions League', 'Europe', 2, 13),
+(5, 'UEFA Europa League', 'Europe', 3, 15);
+
+DROP TABLE IF EXISTS `sponsor`;
+CREATE TABLE `sponsor` (
+    `sponsorId` int NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL,
+    `revenue` int,
+    PRIMARY KEY (`sponsorId`)
+);
+
+INSERT INTO `sponsor` VALUES (1, 'Adidas', 24435363840),
+(2, 'Nike', 34350000000),
+(3, 'Puma', 5172449280),
+(4, 'New Balance', 4500000000),
+(5, 'Under Armour', 5200000000),
+(6, 'Umbro', NULL),
+(7, 'Mizuno', 1600000000);
 
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE `player` (
@@ -73,37 +106,4 @@ INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, 199
 (2, 2, 'Roberto', 'Firmino', 'ST', 46, 16, 8, 71, 1991-10-02, 'Brazil', 1),
 (3, 1, 'Sergio', 'Aguero', 'ST', 40, 27, 8, 68, 1988-06-02, 'Argentina', 3),
 (4, 5, 'Lionel', 'Messi', 'ST/RW', 44, 48, 18, 67, 1987-06-24, 'Argentina', 1);
-
-DROP TABLE IF EXISTS `league`;
-CREATE TABLE `league` (
-    `leagueId` int NOT NULL AUTO_INCREMENT,
-    `name` varchar(255) NOT NULL,
-    `location` varchar(255) NOT NULL,
-    `champ` int NOT NULL,
-    `totalGames` int(40) NOT NULL,
-    PRIMARY KEY (`leagueId`),
-    FOREIGN KEY (`champ`) REFERENCES `team`(`teamId`)
-);
-
-INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
-(2, 'La Liga', 'Spain', 5, 38),
-(3, 'Serie A', 'Italy', 9, 38),
-(4, 'UEFA Champions League', 'Europe', 2, 13),
-(5, 'UEFA Europa League', 'Europe', 3, 15);
-
-DROP TABLE IF EXISTS `sponsor`;
-CREATE TABLE `sponsor` (
-    `sponsorId` int NOT NULL AUTO_INCREMENT,
-    `name` varchar(255) NOT NULL,
-    `revenue` int,
-    PRIMARY KEY (sponsorId)
-);
-
-INSERT INTO `sponsor` VALUES (1, 'Adidas', 24435363840),
-(2, 'Nike', 34350000000),
-(3, 'Puma', 5172449280),
-(4, 'New Balance', 4500000000),
-(5, 'Under Armour', 5200000000),
-(6, 'Umbro', NULL),
-(7, 'Mizuno', 1600000000);
 
