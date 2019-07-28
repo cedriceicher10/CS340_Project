@@ -1,3 +1,5 @@
+Database: CS340_gorterl
+
 CREATE TABLE `team` (
     `teamId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
