@@ -1,6 +1,7 @@
 USE cs340_gorterl;
 
---DROP TABLE IF EXISTS `stadium`;
+ALTER TABLE 
+DROP TABLE IF EXISTS `stadium`;
 CREATE TABLE `stadium` (
     `stadiumId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
@@ -24,7 +25,7 @@ INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097,
 (11, 'Stadio Atleti Azzurri d Italia', 'Bergamo, italy', 21300, 'Grass', 1928),
 (12, 'San Siro', 'Milan, Italy', 80018, 'GrassMaster', 1926);
 
---DROP TABLE IF EXISTS `team`;
+DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
     `teamId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
@@ -34,7 +35,7 @@ CREATE TABLE `team` (
     `gamesPlayed` int NOT NULL,
     `points` int NOT NULL,
     PRIMARY KEY (`teamId`),
-    FOREIGN KEY (`stadium`) REFERENCES `stadium`(`stadiumId`) ON DELETE CASCADE
+    FOREIGN KEY (`stadium`) REFERENCES `stadium`(`stadiumId`) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 INSERT INTO `team` VALUES (1, 'Manchester City', 'Manchester', 1, 1, 38, 98),
@@ -50,7 +51,7 @@ INSERT INTO `team` VALUES (1, 'Manchester City', 'Manchester', 1, 1, 38, 98),
 (11, 'Atalanta B.C.', 'Bergamo, Italy', 11, 3, 38, 69),
 (12, 'Football Club Internazionale Milan', 'Milan, Italy', 12, 4, 38, 69);
 
---DROP TABLE IF EXISTS `league`;
+DROP TABLE IF EXISTS `league`;
 CREATE TABLE `league` (
     `leagueId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
@@ -58,7 +59,7 @@ CREATE TABLE `league` (
     `champ` int,
     `totalGames` int(40) NOT NULL,
     PRIMARY KEY (`leagueId`),
-    FOREIGN KEY (`champ`) REFERENCES `team`(`teamId`) ON DELETE CASCADE
+    FOREIGN KEY (`champ`) REFERENCES `team`(`teamId`) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
@@ -67,7 +68,7 @@ INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
 (4, 'UEFA Champions League', 'Europe', 2, 13),
 (5, 'UEFA Europa League', 'Europe', 3, 15);
 
---DROP TABLE IF EXISTS `sponsor`;
+DROP TABLE IF EXISTS `sponsor`;
 CREATE TABLE `sponsor` (
     `sponsorId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
@@ -83,7 +84,7 @@ INSERT INTO `sponsor` VALUES (1, 'Adidas', 24435363840),
 (6, 'Umbro', NULL),
 (7, 'Mizuno', 1600000000);
 
---DROP TABLE IF EXISTS `player`;
+DROP TABLE IF EXISTS `player`;
 CREATE TABLE `player` (
     `playerId` int NOT NULL AUTO_INCREMENT,
     `teamId` int,
@@ -98,8 +99,8 @@ CREATE TABLE `player` (
     `nationality` varchar(255) NOT NULL,
     `sponsorId` int,
     PRIMARY KEY (`playerId`),
-    FOREIGN KEY (`teamId`) REFERENCES `team`(`teamId`) ON DELETE CASCADE,
-    FOREIGN KEY (`sponsorId`) REFERENCES `sponsor`(`sponsorId`) ON DELETE CASCADE
+    FOREIGN KEY (`teamId`) REFERENCES `team`(`teamId`) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (`sponsorId`) REFERENCES `sponsor`(`sponsorId`) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, 1991-07-08, 'Netherlands', 2),
