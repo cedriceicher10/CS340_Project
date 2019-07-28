@@ -1,6 +1,5 @@
 USE cs340_gorterl;
 
-ALTER TABLE 
 DROP TABLE IF EXISTS `stadium`;
 CREATE TABLE `stadium` (
     `stadiumId` int NOT NULL AUTO_INCREMENT,
