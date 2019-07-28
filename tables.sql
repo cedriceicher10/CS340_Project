@@ -40,7 +40,7 @@ CREATE TABLE `team` (
 INSERT INTO `team` VALUES (1, 'Manchester City', 'Manchester', 1, 1, 38, 98),
 (2, 'Liverpool F.C.', 'Liverpool, England', 2, 2, 38, 97),
 (3, 'Chelsea Football Club', 'London, England', 3, 3, 38, 72),
-(4, 'Tottenham Hotspur Football Club', 'London, England', 4, 4, 38, 71)
+(4, 'Tottenham Hotspur Football Club', 'London, England', 4, 4, 38, 71),
 (5, 'FC Barcelona', 'Barcelona, Spain', 5, 1, 38, 87),
 (6. 'Atletico Madrid', 'Madrid, Spain', 6, 2, 38, 76),
 (7, 'Real Madrid CF', 'Madrid, Spain', 7, 3, 38, 68),
