@@ -34,7 +34,7 @@ CREATE TABLE `team` (
     `gamesPlayed` int NOT NULL,
     `points` int NOT NULL,
     PRIMARY KEY (`teamId`),
-    FOREIGN KEY (`stadium`) REFERENCES `stadium`(`stadiumId`)
+    FOREIGN KEY (`stadium`) REFERENCES `stadium`(`stadiumId`) ON DELETE CASCADE
 );
 
 INSERT INTO `team` VALUES (1, 'Manchester City', 'Manchester', 1, 1, 38, 98),
@@ -58,7 +58,7 @@ CREATE TABLE `league` (
     `champ` int NOT NULL,
     `totalGames` int(40) NOT NULL,
     PRIMARY KEY (`leagueId`),
-    FOREIGN KEY (`champ`) REFERENCES `team`(`teamId`)
+    FOREIGN KEY (`champ`) REFERENCES `team`(`teamId`) ON DELETE CASCADE
 );
 
 INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
@@ -98,8 +98,8 @@ CREATE TABLE `player` (
     `nationality` varchar(255) NOT NULL,
     `sponsorId` int NOT NULL,
     PRIMARY KEY (`playerId`),
-    FOREIGN KEY (`teamId`) REFERENCES `team`(`teamId`),
-    FOREIGN KEY (`sponsorId`) REFERENCES `sponsor`(`sponsorId`)
+    FOREIGN KEY (`teamId`) REFERENCES `team`(`teamId`) ON DELETE CASCADE,
+    FOREIGN KEY (`sponsorId`) REFERENCES `sponsor`(`sponsorId`) ON DELETE CASCADE
 );
 
 INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, 1991-07-08, 'Netherlands', 2),
