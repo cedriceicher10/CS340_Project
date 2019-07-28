@@ -11,7 +11,7 @@ CREATE TABLE `stadium` (
     PRIMARY KEY (`stadiumId`)
 );
 
-INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097, 'GrassMaster', 2002)
+INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097, 'GrassMaster', 2002),
 (2, 'Anfield', 'Liverpool, England', 54074, 'GrassMaster', 1884),
 (3, 'Stamford Bridge', 'London, England', 41631, 'GrassMaster', 1876),
 (4, 'Tottenham Hotspur Stadium', 'London, England', 62062, 'GrassMaster', 2019)
