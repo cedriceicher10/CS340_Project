@@ -14,7 +14,7 @@ CREATE TABLE `stadium` (
 INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097, 'GrassMaster', 2002),
 (2, 'Anfield', 'Liverpool, England', 54074, 'GrassMaster', 1884),
 (3, 'Stamford Bridge', 'London, England', 41631, 'GrassMaster', 1876),
-(4, 'Tottenham Hotspur Stadium', 'London, England', 62062, 'GrassMaster', 2019)
+(4, 'Tottenham Hotspur Stadium', 'London, England', 62062, 'GrassMaster', 2019),
 (5, 'Camp Nou', 'Barcelona, Spain', 99354, 'GrassMaster', 1957),
 (6, 'Wanda Metropolitano', 'Madrid, Spain', 67829, 'Grass', 1993),
 (7, 'Santiago Bernabeu Stadium', 'Madrid, Spain,' 81044, 'Mixto Hybrid Grass Technology', 1947),
