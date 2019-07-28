@@ -52,16 +52,20 @@ CREATE TABLE `player` (
     `fname` varchar(255) NOT NULL,
     `lname` varchar(255) NOT NULL,
     `position` varchar(255) NOT NULL,
+    `appearances` int NOT NULL,
     `goals` int NOT NULL DEFAULT '0',
     `assists` int NOT NULL DEFAULT '0',
     `height` int NOT NULL,
-    `birthdate`
+    `birthdate` date NOT NULL,
     `nationality` varchar(255) NOT NULL,
     `sponsorId` int NOT NULL,
     PRIMARY KEY (`playerId`),
     FOREIGN KEY (`teamId`) REFERENCES team(teamId),
     FOREIGN KEY (`sponsorId`) REFERENCES sponsor(sponsorId)
 );
+
+INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, 1991-07-08, 'Netherlands', 2),
+
 
 CREATE TABLE `league` (
     `leagueId` int NOT NULL AUTO_INCREMENT,
