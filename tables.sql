@@ -1,4 +1,4 @@
---Creating table for stadium
+/*Creating table for stadium*/
 DROP TABLE IF EXISTS `stadium`;
 CREATE TABLE `stadium` (
     `stadiumId` int NOT NULL AUTO_INCREMENT,
@@ -10,7 +10,7 @@ CREATE TABLE `stadium` (
     PRIMARY KEY (`stadiumId`)
 );
 
---Adding data to stadium table
+/*Adding data to stadium table*/
 INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097, 'GrassMaster', 2002),
 (2, 'Anfield', 'Liverpool, England', 54074, 'GrassMaster', 1884),
 (3, 'Stamford Bridge', 'London, England', 41631, 'GrassMaster', 1876),
@@ -24,7 +24,7 @@ INSERT INTO `stadium` VALUES (1, 'Etihad Stadium', 'Manchester, England', 55097,
 (11, 'Stadio Atleti Azzurri d Italia', 'Bergamo, italy', 21300, 'Grass', 1928),
 (12, 'San Siro', 'Milan, Italy', 80018, 'GrassMaster', 1926);
 
---Creating table for team
+/*Creating table for team*/
 DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
     `teamId` int NOT NULL AUTO_INCREMENT,
@@ -38,7 +38,7 @@ CREATE TABLE `team` (
     FOREIGN KEY (`stadium`) REFERENCES `stadium`(`stadiumId`) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
---Adding data to team table
+/*Adding data to team table*/
 INSERT INTO `team` VALUES (1, 'Manchester City', 'Manchester', 1, 1, 38, 98),
 (2, 'Liverpool F.C.', 'Liverpool, England', 2, 2, 38, 97),
 (3, 'Chelsea Football Club', 'London, England', 3, 3, 38, 72),
@@ -52,7 +52,7 @@ INSERT INTO `team` VALUES (1, 'Manchester City', 'Manchester', 1, 1, 38, 98),
 (11, 'Atalanta B.C.', 'Bergamo, Italy', 11, 3, 38, 69),
 (12, 'Football Club Internazionale Milan', 'Milan, Italy', 12, 4, 38, 69);
 
---Creating table for league
+/*Creating table for league*/
 DROP TABLE IF EXISTS `league`;
 CREATE TABLE `league` (
     `leagueId` int NOT NULL AUTO_INCREMENT,
@@ -64,14 +64,14 @@ CREATE TABLE `league` (
     FOREIGN KEY (`champ`) REFERENCES `team`(`teamId`) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
---Adding data to league table
+/*Adding data to league table*/
 INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
 (2, 'La Liga', 'Spain', 5, 38),
 (3, 'Serie A', 'Italy', 9, 38),
 (4, 'UEFA Champions League', 'Europe', 2, 13),
 (5, 'UEFA Europa League', 'Europe', 3, 15);
 
---Creating sponsor table
+/*Creating sponsor table*/
 DROP TABLE IF EXISTS `sponsor`;
 CREATE TABLE `sponsor` (
     `sponsorId` int NOT NULL AUTO_INCREMENT,
@@ -80,7 +80,7 @@ CREATE TABLE `sponsor` (
     PRIMARY KEY (`sponsorId`)
 );
 
---Adding data to sponsor table
+/*Adding data to sponsor table*/
 INSERT INTO `sponsor` VALUES (1, 'Adidas', 24.44),
 (2, 'Nike', 34.35),
 (3, 'Puma', 5.20),
@@ -89,7 +89,7 @@ INSERT INTO `sponsor` VALUES (1, 'Adidas', 24.44),
 (6, 'Umbro', NULL),
 (7, 'Mizuno', 1.60);
 
---Creating player table
+/*Creating player table*/
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE `player` (
     `playerId` int NOT NULL AUTO_INCREMENT,
@@ -109,7 +109,7 @@ CREATE TABLE `player` (
     FOREIGN KEY (`sponsorId`) REFERENCES `sponsor`(`sponsorId`) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
---Adding data to player table
+/*Adding data to player table*/
 INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, 1991-07-08, 'Netherlands', 2),
 (2, 2, 'Roberto', 'Firmino', 'ST', 46, 16, 8, 71, 1991-10-02, 'Brazil', 1),
 (3, 1, 'Sergio', 'Aguero', 'ST', 40, 27, 8, 68, 1988-06-02, 'Argentina', 3),
