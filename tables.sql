@@ -29,7 +29,7 @@ CREATE TABLE `team` (
     `teamId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
     `city` varchar(255) NOT NULL,
-    `stadium` int NOT NULL,
+    `stadium` int,
     `standing` int NOT NULL,
     `gamesPlayed` int NOT NULL,
     `points` int NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE `league` (
     `leagueId` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
     `location` varchar(255) NOT NULL,
-    `champ` int NOT NULL,
+    `champ` int,
     `totalGames` int(40) NOT NULL,
     PRIMARY KEY (`leagueId`),
     FOREIGN KEY (`champ`) REFERENCES `team`(`teamId`) ON DELETE CASCADE
@@ -86,7 +86,7 @@ INSERT INTO `sponsor` VALUES (1, 'Adidas', 24435363840),
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE `player` (
     `playerId` int NOT NULL AUTO_INCREMENT,
-    `teamId` int NOT NULL,
+    `teamId` int,
     `fname` varchar(255) NOT NULL,
     `lname` varchar(255) NOT NULL,
     `position` varchar(255) NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE `player` (
     `height` int NOT NULL,
     `birthdate` date NOT NULL,
     `nationality` varchar(255) NOT NULL,
-    `sponsorId` int NOT NULL,
+    `sponsorId` int,
     PRIMARY KEY (`playerId`),
     FOREIGN KEY (`teamId`) REFERENCES `team`(`teamId`) ON DELETE CASCADE,
     FOREIGN KEY (`sponsorId`) REFERENCES `sponsor`(`sponsorId`) ON DELETE CASCADE
