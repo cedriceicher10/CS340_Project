@@ -1,3 +1,5 @@
+USE cs340_gorterl;
+
 DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
     `teamId` int NOT NULL AUTO_INCREMENT,
