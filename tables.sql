@@ -113,5 +113,8 @@ CREATE TABLE `player` (
 INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, '1991-07-08', 'Netherlands', 2),
 (2, 2, 'Roberto', 'Firmino', 'ST', 46, 16, 8, 71, '1991-10-02', 'Brazil', 1),
 (3, 1, 'Sergio', 'Aguero', 'ST', 40, 27, 8, 68, '1988-06-02', 'Argentina', 3),
-(4, 5, 'Lionel', 'Messi', 'ST/RW', 44, 48, 18, 67, '1987-06-24', 'Argentina', 1);
-
+(4, 5, 'Lionel', 'Messi', 'ST/RW', 44, 48, 18, 67, '1987-06-24', 'Argentina', 1),
+(5, 2, 'Alisson', 'Becker', 'GK', 51, 0, 0, 75, '1992-10-02', 'Brazil', 2),
+(6, 7, 'Thibaut', 'Courtois', 'GK', 32, 0, 0, 78, '1992-05-11', 'Belgium', 1),
+(7, 5, 'Marc Andre', 'ter Stegen', 'GK', 46, 0, 0, 74, '1992-04-30', 'Germany', 1),
+(8, 4, 'Harry', 'Kane', 'ST', 37, 22, 5, 74, '1993-07-28', 'England', 2);
