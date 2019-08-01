@@ -74,8 +74,8 @@ INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
 /*Creating team_league table*/
 DROP TABLE IF EXISTS `team_league`;
 CREATE TABLE `team_league` (
-	`team_id` int,
-	`league_id` int
+	`teamId` int,
+	`leagueId` int
 );
 
 /*Adding data to league table*/
@@ -118,7 +118,7 @@ INSERT INTO `sponsor` VALUES (1, 'Adidas', 24.44),
 (2, 'Nike', 34.35),
 (3, 'Puma', 5.20),
 (4, 'New Balance', 4.50),
-(5, 'Under Armour', 5.20),
+(5, 'Under Armor', 5.20),
 (6, 'Umbro', NULL),
 (7, 'Mizuno', 1.60);
 
@@ -147,4 +147,5 @@ INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, '19
 (2, 2, 'Roberto', 'Firmino', 'ST', 46, 16, 8, 71, '1991-10-02', 'Brazil', 1),
 (3, 1, 'Sergio', 'Aguero', 'ST', 40, 27, 8, 68, '1988-06-02', 'Argentina', 3),
 (4, 5, 'Lionel', 'Messi', 'ST/RW', 44, 48, 18, 67, '1987-06-24', 'Argentina', 1);
+(5, 7, 'Marouane' 'Fellaini', 'CM', 59, 69, 0, 81, '1986 -04-20', 'Belgium', 7);
 
