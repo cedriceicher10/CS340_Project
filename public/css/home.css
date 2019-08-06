@@ -1,0 +1,74 @@
+body {
+	background-color: lightgrey;
+	text-align: center;
+	font-family: 'Patua One', cursive;
+}
+
+#futbol {
+	width: 5%;
+}
+
+#mainTitle {
+	color: black;
+	border-radius: 6px;
+	padding: 10px;
+	font-size: 80px;
+	border: 10px solid white;
+	border-radius: 20px;
+	display: inline-block;
+	font-family: 'Patua One', cursive;
+	background: lightgrey;
+}
+
+#mainTitle:hover {
+	background-image: url("images/fellaini2.PNG");
+	background-size: contain;
+	color: white;
+}
+
+#welcome {
+	color: black;
+	font-size: 30px;
+	font-family: 'Patua One', cursive;
+}
+
+
+#schema {
+	height: 752px;
+	border: 5px solid white;
+}
+
+#ERD {
+	margin-right: 5%;
+	border: 5px solid white;
+}
+
+#siteList {
+	width: 100px;
+	position: fixed;
+	z-index: 1;
+	top: 20px;
+	left: 10px;
+	background: black;
+	border-radius: 20px;
+	border: 2px solid white;
+	overflow-x: hidden;
+	padding: 8px;
+	text-align: left;
+}
+
+a:link, a:visited {
+  color: white;
+  text-align: left;
+  font-family: 'Patua One', cursive;
+  font-size: 25px;
+}
+
+a:hover, a:active {
+  color: blue;
+}
+
+#copyright {
+	font-family: 'Patua One', cursive;
+}
+	

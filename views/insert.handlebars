@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>index</title>
+		<link rel="stylesheet" href="css/insert.css" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet"> <!--Patua One Font-->
+	</head>
+	<body>
+	<!--Title-->
+	<div id="title">
+		<img id="futbol" src="images/futbol.PNG" alt="futbol">
+		<h1 id="mainTitle"><b>Insert<b></h1>
+		<img id="futbol" src="images/futbol.PNG" alt="futbol">
+	</div>
+	<br>
+	
+	<!--Insert into Team-->
+	<div id="insert">
+		<br>
+			<form>
+				<fieldset id="insertTeam">
+					<legend><strong>Insert into TEAM:</strong></legend>
+					<label>Name:
+						<input type="text" id="team_name" size="40" maxlength="100">
+					</label>
+					<label>City:
+						<input type="text" id="team_city" size="40" maxlength="100">
+					</label>
+					<label>Stadium:
+						<input type="text" id="team_stadium" size="40" maxlength="100">
+					</label>
+					<label>Games Played:
+						<input type="number" id="team_gamesplayed" size="40" maxlength="100">
+					</label>
+					<label>Points:
+						<input type="number" id="team_points" size="40" maxlength="100">
+					</label>
+					<button id="teamButton" class="submit"><strong>Insert Into Database</strong></button>
+					<br></br>
+				</fieldset>
+			</form>
+		</br>
+		<!--Insert into Stadium-->
+		<br>
+			<form>
+				<fieldset id="insertStadium">
+					<legend><strong>Insert into STADIUM:</strong></legend>
+					<label>Name:
+						<input type="text" id="stadium_name" size="40" maxlength="100">
+					</label>
+					<label>City:
+						<input type="text" id="stadium_city" size="40" maxlength="100">
+					</label>
+					<label>Capacity:
+						<input type="number" id="stadium_capacity" size="40" maxlength="100">
+					</label>
+					<label>Pitch:
+						<input type="text" id="stadium_pitch" size="40" maxlength="100">
+					</label>
+					<label>Year:
+						<input type="text" id="stadium_year" size="40" maxlength="100">
+					</label>
+					<button id="stadiumButton" class="submit"><strong>Insert Into Database</strong></button>
+					<br></br>
+				</fieldset>
+			</form>
+		</br>
+		<!--Insert into League-->
+		<br>
+			<form>
+				<fieldset id="insertLeague">
+					<legend><strong>Insert into LEAGUE:</strong></legend>
+					<label>Name:
+						<input type="text" id="league_name" size="40" maxlength="100">
+					</label>
+					<label>Champion:
+						<input type="text" id="league_champion" size="40" maxlength="100">
+					</label>
+					<label>TotalGames:
+						<input type="number" id="league_totalgames" size="40" maxlength="100">
+					</label>
+					<label>Location:
+						<input type="text" id="league_location" size="40" maxlength="100">
+					</label>
+					<button id="leagueButton" class="submit"><strong>Insert Into Database</strong></button>
+					<br></br>
+				</fieldset>
+			</form>
+		</br>
+		<!--Insert into Player-->
+		<br>
+			<form>
+				<fieldset id="insertPlayer">
+					<legend><strong>Insert into PLAYER:</strong></legend>
+					<label>Team:
+						<input type="text" id="player_team" size="40" maxlength="100">
+					</label>
+					<label>First Name:
+						<input type="text" id="player_firstname" size="40" maxlength="100">
+					</label>
+					<label>Last Name:
+						<input type="text" id="player_lastname" size="40" maxlength="100">
+					</label>
+					<label>Position:
+						<input type="text" id="player_position" size="40" maxlength="100">
+					</label>
+					<label>Appearances:
+						<input type="number" id="player_appearances" size="40" maxlength="100">
+					</label>
+					<label>Goals:
+						<input type="number" id="player_goals" size="40" maxlength="100">
+					</label>
+					<label>Assists:
+						<input type="number" id="player_assists" size="40" maxlength="100">
+					</label>
+					<label>Height:
+						<input type="number" id="player_height" size="40" maxlength="100">
+					</label>
+					<label>Birth Date:
+						<input type="text" id="player_birthdate" size="40" maxlength="100">
+					</label>
+					<label>Nationality:
+						<input type="text" id="player_nationality" size="40" maxlength="100">
+					</label>
+					<label>Sponsor:
+						<input type="text" id="player_sponsor" size="40" maxlength="100">
+					</label>
+					<button id="playerButton" class="submit"><strong>Insert Into Database</strong></button>
+					<br></br>
+				</fieldset>
+			</form>
+		</br>
+		<!--Insert into Sponsor-->
+		<br>
+			<form>
+				<fieldset id="insertSponsor">
+					<legend><strong>Insert into SPONSOR:</strong></legend>
+					<label>Name:
+						<input type="text" id="sponsor_name" size="40" maxlength="100">
+					</label>
+					<label>Revenue:
+						<input type="number" id="sponsor_revenue" size="40" maxlength="100">
+					</label>
+					<button id="sponsorButton" class="submit"><strong>Insert Into Database</strong></button>
+					<br></br>
+				</fieldset>
+			</form>
+		</br>
+	</div>
+	
+	<!--Horizontal Site Directory List-->
+	<div id="siteList">
+		<a href="home">Home</a>
+		<a href="insert">Insert</a>
+		<a href="update">Update</a>
+		<a href="search">Search</a>
+		<a href="delete">Delete</a>
+	</div>
+	<br>
+	
+	<!--Closing Remarks-->
+	<br>
+	<div id="copyright"><b>OSU 340 - Cedric Eicher - Lennard Gorter - Group 18 - All Rights Reserved</b></div>
+	
+	<!--JavaScript Call-->
+	<script src="js/insert.js"></script>
+	
+	</body>
+</html>
