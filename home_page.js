@@ -12,13 +12,22 @@ app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 
+// Home page
 app.get('/home',function(req,res,next){
   res.render('home');
 });
 
+// Search page
 app.get('/search',function(req,res,next){
   res.render('search');
 });
+
+// Tables
+app.use('/sponsor_table', require('./sponsor_table.js'));
+app.use('/player_table', require('./player_table.js'));
+app.use('/team_table', require('./team_table.js'));
+app.use('/league_table', require('./league_table.js'));
+app.use('/stadium_table', require('./stadium_table.js'));
 
 app.use('/update', require('./update.js'));
 
