@@ -1,0 +1,86 @@
+body {
+	background-color: lightgrey;
+	font-family: 'Patua One', cursive;
+}
+
+tables, th, td {
+	text-align: left;
+	border: 1px solid black;
+	padding: 2px;
+}
+
+th {
+	background-color: lightblue;
+}
+
+td {
+	background-color: white;
+}
+
+#tableTitle {
+	font-size: 35px;
+}
+
+#futbol {
+	width: 5%;
+}
+
+#mainTitle {
+	color: black;
+	border-radius: 6px;
+	padding: 10px;
+	font-size: 80px;
+	border: 10px solid white;
+	border-radius: 20px;
+	display: inline-block;
+	font-family: 'Patua One', cursive;
+	background: lightgrey;
+}
+
+#title {
+	display: inline-block;
+	text-align: center;
+}
+
+#siteList {
+	width: 200px;
+	position: fixed;
+	z-index: 1;
+	top: 20px;
+	left: 10px;
+	background: black;
+	border-radius: 20px;
+	border: 2px solid white;
+	overflow-x: hidden;
+	padding: 8px;
+	text-align: left;
+}
+
+a:link, a:visited {
+  color: lightblue;
+  text-align: left;
+  font-family: 'Patua One', cursive;
+  font-size: 25px;
+}
+
+a:hover, a:active {
+  color: blue;
+}
+
+button {
+	background-color: lightblue;
+	border: 2px solid black;
+	font-family: 'Patua One', cursive;
+	font-size: 15px;
+}
+
+button:hover {
+	background-color: black;
+	color: white;
+}
+
+#copyright {
+	font-family: 'Patua One', cursive;
+	text-align: center;
+}
+	
