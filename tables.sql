@@ -147,5 +147,8 @@ INSERT INTO `player` VALUES (1, 2, 'Virgil', 'van Dijk', 'CB', 50, 6, 4, 76, '19
 (2, 2, 'Roberto', 'Firmino', 'ST', 46, 16, 8, 71, '1991-10-02', 'Brazil', 1),
 (3, 1, 'Sergio', 'Aguero', 'ST', 40, 27, 8, 68, '1988-06-02', 'Argentina', 3),
 (4, 5, 'Lionel', 'Messi', 'ST/RW', 44, 48, 18, 67, '1987-06-24', 'Argentina', 1),
-(5, 7, 'Marouane', 'Fellaini', 'CM', 59, 69, 0, 81, '1986-04-20', 'Belgium', 7);
+(5, 7, 'Marouane', 'Fellaini', 'CM', 59, 69, 0, 81, '1986-04-20', 'Belgium', 7),
+(6, 11, 'Alejandro', 'Gomez', 'CF', 41, 9, 12, 65, '1988-02-15', 'Argentina', 1),
+(7, 12, 'Krzysztof', 'Piatek', 'ST', 37, 22, 2, 72, '1995-07-01', 'Poland', 1),
+(8, 12, 'Fabio', 'Borini', 'ST/LW/RW', 25, 3, 1, 71, '1991-03-29', 'Italy', 2);
 
