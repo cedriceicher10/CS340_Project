@@ -6,19 +6,19 @@ NOTE: The identifier for backend variables is the colon, :
 */
 
 /* Select all Teams for the Team drop-down */
-SELECT teamID, name FROM Team
+SELECT teamId, name FROM Team
 
 /* Select all Stadiums for the Stadium drop-down */
-SELECT stadiumID, name FROM Stadium
+SELECT stadiumId, name FROM Stadium
 
 /* Select all Players for the Player drop-down */
-SELECT playerID, name FROM Player
+SELECT playerId, name FROM Player
 
 /* Select all Leagues for the League drop-down */
-SELECT leagueID, name FROM League
+SELECT leagueId, name FROM League
 
 /* Select all Sponsors for the Sponsor drop-down */
-SELECT sponsorID, name FROM Sponsor
+SELECT sponsorId, name FROM Sponsor
 
 /* Insert into Team table */
 INSERT INTO Team (name, city, stadium, standing, gamesPlayed, points) VALUES (:team_name, :team_city, :team_stadium, :team_standing, :team_gamesPlayed, :points)
@@ -68,7 +68,7 @@ ORDER BY player.FName;
 /* Display all Teams that play in the Champions League */
 SELECT DISTINCT team.name, league.name
 FROM team
-INNER JOIN team_league ON team_league.teamID = team.teamID
-INNER JOIN league ON league.leagueID = team_league.leagueID
+INNER JOIN team_league ON team_league.teamId = team.teamId
+INNER JOIN league ON league.leagueId = team_league.leagueId
 WHERE league.name = 'UEFA Champions League';
 
