@@ -46,20 +46,29 @@ SELECT fname, lname FROM Player
 WHERE Player.goals >= 10 AND Player.nationality = "England"
 GROUP BY lname
 
-/* Search for UEFA Champions League Teams that have Stadiums with GrassMaster type pitch and 1+ Players with an Adidas Sponsorship */
-SELECT team.name AS Team_Name FROM team
-INNER JOIN stadium ON team.stadiumId = stadium.stadiumId
-WHERE stadium.pitch = "GrassMaster"
-IN (
-SELECT team.name AS Team_Name FROM team
-INNER JOIN team_league ON team.teamId = team_league.teamId
-INNER JOIN league ON team_league.leagueId = league.leagueId
-WHERE league.name = 'UEFA Champions League'
-)
-IN (SELECT team.name AS Team_Name FROM team
-INNER JOIN player ON team.teamId = player.teamId
-INNER JOIN sponsor ON player.sponsorId = sponsor.sponsorId
-WHERE sponsor.name = "Adidas"
-);
-GROUP BY team.name
-ORDER BY team.name;
+/* Display all Teams */
+SELECT * FROM team;
+
+/* Display all Stadiums */
+SELECT * FROM stadium;
+
+/* Display all Players */
+SELECT * FROM player;
+
+/* Display all Leagues */
+SELECT * FROM league;
+
+/* Display all Players with Nike sponsorship */
+SELECT player.FName, player.LName, sponsor.name
+FROM player
+INNER JOIN sponsor ON sponsor.sponsorID = player.sponsorID
+WHERE sponsor.name = 'Nike'
+ORDER BY player.FName;
+
+/* Display all Teams that play in the Champions League */
+SELECT DISTINCT team.name, league.name
+FROM team
+INNER JOIN team_league ON team_league.teamID = team.teamID
+INNER JOIN league ON league.leagueID = team_league.leagueID
+WHERE league.name = 'UEFA Champions League';
+
