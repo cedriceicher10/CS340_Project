@@ -10,40 +10,32 @@
 	<!--Title-->
 	<div id="title">
 		<img id="futbol" src="images/futbol.PNG" alt="futbol">
-		<h1 id="mainTitle"><b>SPONSOR<b></h1>
+		<h1 id="mainTitle"><b>TEAM<b></h1>
 		<img id="futbol" src="images/futbol.PNG" alt="futbol">
 	</div>
 	<br>
 	
-	<!--Showing Tables-->
-	<!--Sponsor-->
+	<!--Showing Tables-->	
+	<!--Team-->
 	<br></br><br></br>
-	<span id="tableTitle">SPONSOR TABLE</span>
+	<span id="tableTitle">TEAM-LEAGUE TABLE</span>
 	<table>
 		<thead> 
-			<th>SponsorId</th>
-			<th>Name</th> 
-			<th>Revenue</th>
+			<th>TeamLeagueId</th>
+			<th>TeamId</th>
+			<th>LeagueId</th> 
 			<th>Delete</th>
 		</thead> 
 		<tbody> 
-			{{#each sponsor}} 
+			{{#each team_league}} 
 			<tr> 
-				<td>{{sponsorId}}</td>
-				<td>{{name}}</td> 
-				<td>{{revenue}}</td>
-				<td><button onclick="deleteSponsor({{sponsorId}})">Delete</button></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
+				<td>{{team_leagueId}}</td>
+				<td>{{teamId}}</td>
+				<td>{{leagueId}}</td> 
+				<td><button onclick="deleteTeamLeague({{team_leagueId}})">Delete</button></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
 			</tr> 
 			{{/each}}
 		</tbody>
-
-		<form id="insertsponsor" action="/sponsor_table" method="post">
-			<br>Insert a new Sponsor!<br>
-        	<br>Sponsor Name: <input type="text" name="name"><br>
-        	Sponsor Revenue (in billions): <input type="number" name="revenue"><br>
-        	<input type="submit" value="Submit">
-        </form>
-
 	</table>
 	
 	<!--Horizontal Site Directory List-->
@@ -64,7 +56,7 @@
 	<div id="copyright"><b>OSU 340 - Cedric Eicher - Lennard Gorter - Group 18 - All Rights Reserved</b></div>
 	
 	<!--JavaScript Call-->
-	<script src="js/delete_sponsor.js"></script>
+	<script src="js/delete_team-league.js"></script>
 	
 	</body>
 </html>

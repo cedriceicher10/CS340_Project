@@ -51,8 +51,8 @@
 				<td>{{birthdate}}</td>
 				<td>{{nationality}}</td>
 				<td>{{sponsorId}}</td>
-				<td><button onclick="deletePerson({{stadiumId}})">Delete</button></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
-				<td><a href="/stadium/{{stadiumId}}">Update</a></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
+				<td><button onclick="deletePlayer({{playerId}})">Delete</button></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
+				<td><a href="/player/{{playerId}}">Update</a></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
 			</tr> 
 			{{/each}}
 		</tbody>
@@ -87,6 +87,7 @@
 		<a href="stadium_table">Stadium Table</a><br>
 		<a href="team_table">Team Table</a><br>
 		<a href="league_table">League Table</a><br>
+		<a href="team-league_table">Team-League Table</a><br>
 		<a href="sponsor_table">Sponsor Table</a><br>
 		<a href="player_table">Player Table</a><br>
 		<a href="search">Search Queries</a><br>	
@@ -98,7 +99,7 @@
 	<div id="copyright"><b>OSU 340 - Cedric Eicher - Lennard Gorter - Group 18 - All Rights Reserved</b></div>
 	
 	<!--JavaScript Call-->
-	<script src="js/view_table.js"></script>
+	<script src="js/delete_player.js"></script>
 	
 	</body>
 </html>
