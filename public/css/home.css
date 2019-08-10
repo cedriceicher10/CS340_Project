@@ -44,7 +44,7 @@ body {
 }
 
 #siteList {
-	width: 100px;
+	width: 250px;
 	position: fixed;
 	z-index: 1;
 	top: 20px;
@@ -58,7 +58,7 @@ body {
 }
 
 a:link, a:visited {
-  color: white;
+  color: lightblue;
   text-align: left;
   font-family: 'Patua One', cursive;
   font-size: 25px;
