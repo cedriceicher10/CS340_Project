@@ -16,6 +16,5 @@ module.exports = function(){
 			res.render('stadium_table', context);
 		});
 	});
-	
 	return router;
 }();
