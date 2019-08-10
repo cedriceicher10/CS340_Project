@@ -7,22 +7,22 @@ module.exports = function(){
 	// Did this cause Justin's way with complete wouldn't work
 	router.get('/', function(req, res){
 		var context = {};
-		context.jsscripts = ["delete_league.js"]; // Justin add
-		mysql.pool.query('SELECT * FROM league', function(err, results, fields){
+		context.jsscripts = ["delete_team-league.js"]; // Justin add
+		mysql.pool.query('SELECT * FROM team_league', function(err, results, fields){
 			if(err){
 				next(err);
 				return;
 			}
-			context.league = results;
-			res.render('league_table', context);
+			context.team_league = results;
+			res.render('team-league_table', context);
 		});
 	});
 	
 	// Justin Add [Start]
-	router.delete('/:leagueId', function(req, res){
+	router.delete('/:team_leagueId', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM league WHERE leagueId = ?";
-        var inserts = [req.params.leagueId];
+        var sql = "DELETE FROM team_league WHERE team_leagueId = ?";
+        var inserts = [req.params.team_leagueId];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));

@@ -74,35 +74,37 @@ INSERT INTO `league` VALUES (1, 'English Premier League', 'England', 1, 38),
 /*Creating team_league table*/
 DROP TABLE IF EXISTS `team_league`;
 CREATE TABLE `team_league` (
+	`team_leagueId` int NOT NULL AUTO_INCREMENT,
 	`teamId` int,
-	`leagueId` int
+	`leagueId` int,
+	PRIMARY KEY (`team_leagueId`)
 );
 
 /*Adding data to league table*/
-INSERT INTO `team_league` VALUES (1, 1),
-(1, 4),
-(2, 1),
-(2, 4),
-(3, 1),
-(3, 5),
-(4, 1),
-(4, 4),
-(5, 2),
-(5, 4),
-(6, 2),
-(5, 5),
-(7, 2),
-(7, 4),
-(8, 2),
-(8, 5),
-(9, 3),
-(9, 4),
-(10, 3),
-(10, 4),
-(11, 3),
-(11, 5),
-(12, 3),
-(12, 5);
+INSERT INTO `team_league` VALUES (1, 1, 1),
+(2, 1, 4),
+(3, 2, 1),
+(4, 2, 4),
+(5, 3, 1),
+(6, 3, 5),
+(7, 4, 1),
+(8, 4, 4),
+(9, 5, 2),
+(10, 5, 4),
+(11, 6, 2),
+(12, 5, 5),
+(13, 7, 2),
+(14, 7, 4),
+(15, 8, 2),
+(16, 8, 5),
+(17, 9, 3),
+(18, 9, 4),
+(19, 10, 3),
+(20, 10, 4),
+(21, 11, 3),
+(22, 11, 5),
+(23, 12, 3),
+(24, 12, 5);
 
 /*Creating sponsor table*/
 DROP TABLE IF EXISTS `sponsor`;

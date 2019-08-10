@@ -7,6 +7,7 @@ module.exports = function(){
 	// Did this cause Justin's way with complete wouldn't work
 	router.get('/', function(req, res){
 		var context = {};
+		context.jsscripts = ["delete_sponsor.js"]; // Justin add
 		mysql.pool.query('SELECT * FROM sponsor', function(err, results, fields){
 			if(err){
 				next(err);
@@ -31,7 +32,23 @@ module.exports = function(){
 			}
 		});
 	});
+	
+	// Justin Add [Start]
+	router.delete('/:sponsorId', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM sponsor WHERE sponsorId = ?";
+        var inserts = [req.params.sponsorId];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            } else{
+                res.status(202).end();
+            }
+        })
+    })
+	// Justin Add [End]
 
 	return router;
 }();
-				  

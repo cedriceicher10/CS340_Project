@@ -27,6 +27,7 @@ app.use('/sponsor_table', require('./sponsor_table.js'));
 app.use('/player_table', require('./player_table.js'));
 app.use('/team_table', require('./team_table.js'));
 app.use('/league_table', require('./league_table.js'));
+app.use('/team-league_table', require('./team-league_table.js'));
 app.use('/stadium_table', require('./stadium_table.js'));
 
 app.use('/update', require('./update.js'));
