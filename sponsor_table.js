@@ -27,7 +27,7 @@ module.exports = function(){
 				res.end();
 			}
 			else{
-					res.redirect('/sponsor_table');
+				res.redirect('/sponsor_table');
 			}
 		});
 	});
