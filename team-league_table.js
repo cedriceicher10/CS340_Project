@@ -36,6 +36,21 @@ module.exports = function(){
 			complete();
 		});
 	}
+
+	router.post('/', function(req, res){
+		var mysql = req.app.get('mysql');
+		var sql = "INSERT INTO team_league (teamId, leagueId) VALUES (?,?)";
+		var inserts = [req.body.teamId, req.body.leagueId];
+		sql = mysql.pool.query(sql,inserts,function(err, results, fields){
+			if(err){
+				res.write(JSON.stringify(err));
+				res.end();
+			}
+			else{
+				res.redirect('/team-league_table');
+			}
+		});
+	});
 	
 	// Justin Add [Start]
 	router.delete('/:team_leagueId', function(req, res){
