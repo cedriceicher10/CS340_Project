@@ -3,6 +3,17 @@ module.exports = function(){
     var router = express.Router();
 	
 	var mysql = require('./dbcon.js');
+
+	function getTeams(res, mysql, context, complete){
+		mysql.pool.query("SELECT teamId, name FROM team", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.teams = results;
+			complete();
+		});
+	}
 	
 	// Did this cause Justin's way with complete wouldn't work
 	router.get('/', function(req, res){
@@ -13,6 +24,7 @@ module.exports = function(){
 				next(err);
 				return;
 			}
+			getTeams(res, mysql, context, complete);
 			context.player = results;
 			res.render('player_table', context);
 		});
