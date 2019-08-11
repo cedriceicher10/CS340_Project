@@ -36,6 +36,22 @@
 			</tr> 
 			{{/each}}
 		</tbody>
+
+		<form id="insertleague_team" action="/team-league_table" method="post">
+			<br>Insert a new Team-League Pairing!<br>
+			<br>Select a League: <select name="leagueId">
+				{{#each leagues}}
+				<option value="{{leagueId}}">{{name}}</option>
+				{{/each}}
+			</select><br>
+        	<br>Select a Team: <select name="teamId">
+				{{#each teams}}
+				<option value="{{teamId}}">{{name}}</option>
+				{{/each}}
+			</select><br>
+        	<input type="submit" value="Submit">
+        </form>
+
 	</table>
 	
 	<!--Horizontal Site Directory List-->

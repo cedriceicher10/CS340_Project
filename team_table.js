@@ -16,7 +16,7 @@ module.exports = function(){
 	}
 
 	function getStadiums(res, mysql, context, complete){
-		mysql.pool.query("SELECT stadiumId, name FROM team", function(error, results, fields){
+		mysql.pool.query("SELECT stadiumId, name FROM stadium", function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
 				res.end();
