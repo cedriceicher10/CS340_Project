@@ -40,6 +40,20 @@
 			</tr> 
 			{{/each}}
 		</tbody>
+
+		<form id="insertleague" action="/league_table" method="post">
+			<br>Insert a new League!<br>
+        	<br>League Name: <input type="text" name="name"><br>
+        	Location: <input type="text" name="location"><br>
+			Select the previous Champion: <select name="champ">
+				{{#each teams}}
+				<option value="{{teamId}}">{{name}}</option>
+				{{/each}}
+			</select>
+			Total Games per Season: <input type="number" name="totalGames"><br>
+        	<input type="submit" value="Submit">
+        </form>
+
 	</table>
 	
 	<!--Horizontal Site Directory List-->

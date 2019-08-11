@@ -4,20 +4,43 @@ module.exports = function(){
 	
 	var mysql = require('./dbcon.js');
 	
-	// Did this cause Justin's way with complete wouldn't work
-	router.get('/', function(req, res){
-		var context = {};
-		context.jsscripts = ["delete_team.js"]; // Justin add
-		mysql.pool.query('SELECT * FROM team', function(err, results, fields){
-			if(err){
-				next(err);
-				return;
+	function getTeams(res, mysql, context, complete){
+		mysql.pool.query("SELECT * FROM team", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
 			}
 			context.team = results;
-			res.render('team_table', context);
+			complete();
+		});
+	}
+
+	function getStadiums(res, mysql, context, complete){
+		mysql.pool.query("SELECT stadiumId, name FROM team", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.stadiums = results;
+			complete();
+		});
+	}
+
+	router.post('/', function(req, res){
+		var mysql = req.app.get('mysql');
+		var sql = "INSERT INTO team (name, city, stadium, standing, gamesPlayed, points) VALUES (?,?,?,?,?,?)";
+		var inserts = [req.body.name, req.body.city, req.body.stadium, req.body.standing, req.body.gamesPlayed, req.body.points];
+		sql = mysql.pool.query(sql,inserts,function(err, results, fields){
+			if(err){
+				res.write(JSON.stringify(err));
+				res.end();
+			}
+			else{
+				res.redirect('/team_table');
+			}
 		});
 	});
-	
+
 	// Justin Add [Start]
 	router.delete('/:teamId', function(req, res){
         var mysql = req.app.get('mysql');
@@ -34,6 +57,22 @@ module.exports = function(){
         })
     })
 	// Justin Add [End]
+
+	// Did this cause Justin's way with complete wouldn't work
+	router.get('/', function(req, res){
+		var callbackCount = 0;
+		var context = {};
+		context.jsscripts = ["delete_team.js"]; // Justin add
+		var mysql = req.app.get('mysql');
+		getTeams(res, mysql, context, complete);
+		getStadiums(res, mysql, context, complete);
+		function complete(){
+			callbackCount++;
+			if (callbackCount >= 2){
+				res.render('team_table', context);
+			}
+		}
+	});
 	
 	return router;
 }();

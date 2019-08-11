@@ -4,6 +4,17 @@ module.exports = function(){
 	
 	var mysql = require('./dbcon.js');
 
+	function getPlayers(res, mysql, context, complete){
+		mysql.pool.query("SELECT * FROM player", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.player = results;
+			complete();
+		});
+	}
+
 	function getTeams(res, mysql, context, complete){
 		mysql.pool.query("SELECT teamId, name FROM team", function(error, results, fields){
 			if(error){
@@ -14,21 +25,17 @@ module.exports = function(){
 			complete();
 		});
 	}
-	
-	// Did this cause Justin's way with complete wouldn't work
-	router.get('/', function(req, res){
-		var context = {};
-		context.jsscripts = ["delete_player.js"]; // Justin add
-		mysql.pool.query('SELECT * FROM player', function(err, results, fields){
-			if(err){
-				next(err);
-				return;
+
+	function getSponsors(res, mysql, context, complete){
+		mysql.pool.query("SELECT sponsorId, name FROM sponsor", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
 			}
-			getTeams(res, mysql, context, complete);
-			context.player = results;
-			res.render('player_table', context);
+			context.sponsors = results;
+			complete();
 		});
-	});
+	}
 	
 	router.post('/', function(req, res){
 		var mysql = req.app.get('mysql');
@@ -61,6 +68,23 @@ module.exports = function(){
         })
     })
 	// Justin Add [End]
+
+	// Did this cause Justin's way with complete wouldn't work
+	router.get('/', function(req, res){
+		var callbackCount = 0;
+		var context = {};
+		context.jsscripts = ["delete_player.js"]; // Justin add
+		var mysql = req.app.get('mysql');
+		getPlayers(res, mysql, context, complete);
+		getTeams(res, mysql, context, complete);
+		getSponsors(res, mysql, context, complete);
+		function complete(){
+			callbackCount++;
+			if (callbackCount >= 3){
+				res.render('player_table', context);
+			}
+		}
+	});
 	
 	return router;
 }();

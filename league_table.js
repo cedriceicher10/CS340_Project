@@ -3,18 +3,41 @@ module.exports = function(){
     var router = express.Router();
 	
 	var mysql = require('./dbcon.js');
-	
-	// Did this cause Justin's way with complete wouldn't work
-	router.get('/', function(req, res){
-		var context = {};
-		context.jsscripts = ["delete_league.js"]; // Justin add
-		mysql.pool.query('SELECT * FROM league', function(err, results, fields){
-			if(err){
-				next(err);
-				return;
+
+	function getTeams(res, mysql, context, complete){
+		mysql.pool.query("SELECT teamId, name FROM team", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.teams = results;
+			complete();
+		});
+	}
+
+	function getLeagues(res, mysql, context, complete){
+		mysql.pool.query("SELECT * FROM league", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
 			}
 			context.league = results;
-			res.render('league_table', context);
+			complete();
+		});
+	}
+
+	router.post('/', function(req, res){
+		var mysql = req.app.get('mysql');
+		var sql = "INSERT INTO league (name, location, champ, totalGames) VALUES (?,?,?,?)";
+		var inserts = [req.body.name, req.body.location, req.body.champ, req.body,totalGames];
+		sql = mysql.pool.query(sql,inserts,function(err, results, fields){
+			if(err){
+				res.write(JSON.stringify(err));
+				res.end();
+			}
+			else{
+				res.redirect('/league_table');
+			}
 		});
 	});
 	
@@ -34,6 +57,21 @@ module.exports = function(){
         })
     })
 	// Justin Add [End]
+
+	router.get('/', function(req, res){
+		var callbackCount = 0;
+		var context = {};
+		context.jsscripts = ["delete_league.js"]; // Justin add
+		var mysql = req.app.get('mysql');
+		getTeams(res, mysql, context, complete);
+		getLeagues(res, mysql, context, complete);
+		function complete(){
+			callbackCount++;
+			if (callbackCount >= 2){
+				res.render('league_table', context);
+			}
+		}
+	});
 	
 	return router;
 }();
