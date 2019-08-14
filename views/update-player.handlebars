@@ -1,0 +1,28 @@
+<h1>Update {{player.fname}} {{player.lname}}:</h1>
+<form id="update-player" action="/player_table" method="post">
+	Select a Team: <select name="teamId" id="team-selector">
+	    {{#each teams}}
+		<option value="{{teamId}}">{{name}}</option>
+		{{/each}}
+		</select><br>
+	First Name: <input type="text" name="fname" value="{{player.fname}}"><br>
+	Last Name: <input type="text" name="lname" value="{{player.lname}}"><br>
+	Position: <input type="text" name="position" value="{{player.position}}"><br>
+	Appearances: <input type="number" name="appearances" value="{{player.appearances}}"><br>
+	Goals: <input type="number" name="goals" value="{{player.goals}}"><br>
+	Assists: <input type="number" name="assists" value="{{player.assists}}"><br>
+	Height (in inches): <input type="number" name="height" value="{{player.height}}"><br>
+	Birthdate: <input type="date" name="birthdate" value="{{player.birthdate}}"><br>
+	Nationality: <input type="text" name="nationality" value="{{player.nationality}}"><br>
+	Select a Sponsor: <select name="sponsorId" id="sponsor-selector">
+	    {{#each sponsors}}
+		<option value="{{sponsorId}}">{{name}}</option>
+		{{/each}}
+		</select><br>
+</form>
+<button onclick="updatePlayer({{player.playerId}})">Submit Updates</button>
+<script src="js/selectedteam.js"></script>
+<script src="js/selectedsponsor.js"></script>
+<script src="js/updateplayer.js"></script>
+<script defer>selectTeam({{player.teamId}});</script>
+<script defer>selectSponsor({{player.sponsorId}});</script>

@@ -47,6 +47,35 @@ module.exports = function(){
 		});
 	}
 
+	function getPlayer(res, mysql, context, playerId, complete){
+		var sql = "SELECT playerId, teamId, fname, lname, position, appearances, goals, assists, height, birthdate, nationality, sponsorId FROM player WHERE playerId = ? ";
+		var inserts = [playerId];
+		mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.player = results[0];
+			complete();
+		});
+	}
+
+	router.get('/:playerId', function(req, res){
+		callbackCount = 0;
+		var context = {};
+		context.jsscripts = ["selectedteam.js", "selectedsponsor.js", "updateplayer.js"];
+		var mysql = req.app.get('mysql');
+		getPlayer(res, mysql, context, req.params.playerId, complete);
+		getTeams(res, mysql, context, complete);
+		getSponsors(res, mysql, context, complete);
+		function complete(){
+			callbackCount++;
+			if(callbackCount >= 3){
+				res.render('update-player', context);
+			}
+		}
+	});
+
 	router.post('/', function(req, res){
 		var mysql = req.app.get('mysql');
 		var sql = "INSERT INTO player (teamId, fname, lname, position, appearances, goals, assists, height, birthdate, nationality, sponsorId) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -78,6 +107,22 @@ module.exports = function(){
         })
     })
 	// Justin Add [End]
+
+	router.put('/:playerId', function(req, res){
+		var mysql = req.app.get('mysql');
+		var sql = "UPDATE player SET teamId=?, fname=?, lname=?, position=?, appearances=?, goals=?, assists=?, height=?, birthdate=?, nationality=?, sponsorId=? WHERE playerId=?";
+		var inserts = [req.body.teamId, req.body.fname, req.body.lname, req.body.position, req.body.appearances, req.body.goals, req.body.assists, req.body.height, req.body.birthdate, req.body.nationality, req.body.sponsorId, req.params.playerId];
+		sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			else{
+				res.status(200);
+				res.end();
+			}
+		});
+	});
 
 	// Did this cause Justin's way with complete wouldn't work
 	router.get('/', function(req, res){
