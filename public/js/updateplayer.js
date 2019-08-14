@@ -4,7 +4,7 @@ function updatePlayer(playerId){
         type: 'PUT',
         data: $('#update-player').serialize(),
         success: function(result){
-            window.location.replace("./");
+            window.location.replace("/player_table");
         }
     })
 };
