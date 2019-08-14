@@ -1,7 +1,7 @@
 module.exports = function(){
 	var express = require('express');
     var router = express.Router();
-	
+
 	var mysql = require('./dbcon.js');
 
 	function getTeams(res, mysql, context, complete){
@@ -29,7 +29,7 @@ module.exports = function(){
 	router.post('/', function(req, res){
 		var mysql = req.app.get('mysql');
 		var sql = "INSERT INTO league (name, location, champ, totalGames) VALUES (?,?,?,?)";
-		var inserts = [req.body.name, req.body.location, req.body.champ, req.body,totalGames];
+		var inserts = [req.body.name, req.body.location, req.body.champ, req.body.totalGames];
 		sql = mysql.pool.query(sql,inserts,function(err, results, fields){
 			if(err){
 				res.write(JSON.stringify(err));
@@ -40,7 +40,7 @@ module.exports = function(){
 			}
 		});
 	});
-	
+
 	// Justin Add [Start]
 	router.delete('/:leagueId', function(req, res){
         var mysql = req.app.get('mysql');
@@ -72,6 +72,6 @@ module.exports = function(){
 			}
 		}
 	});
-	
+
 	return router;
 }();

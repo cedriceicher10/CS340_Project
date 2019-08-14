@@ -14,30 +14,30 @@
 		<img id="futbol" src="images/futbol.PNG" alt="futbol">
 	</div>
 	<br>
-	
-	<!--Showing Tables-->	
+
+	<!--Showing Tables-->
 	<!--League-->
 	<br></br><br></br>
 	<span id="tableTitle">LEAGUE TABLE</span>
 	<table>
-		<thead> 
+		<thead>
 			<th>LeagueId</th>
-			<th>Name</th> 
+			<th>Name</th>
 			<th>Location</th>
-			<th>Champions</th> 
+			<th>Champions</th>
 			<th>Total Games</th>
-			<th>Delete</th>				
-		</thead> 
-		<tbody> 
-			{{#each league}} 
-			<tr> 
+			<th>Delete</th>
+		</thead>
+		<tbody>
+			{{#each league}}
+			<tr>
 				<td>{{leagueId}}</td>
-				<td>{{name}}</td> 
+				<td>{{name}}</td>
 				<td>{{location}}</td>
 				<td>{{champ}}</td>
 				<td>{{totalGames}}</td>
 				<td><button onclick="deleteLeague({{leagueId}})">Delete</button></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
-			</tr> 
+			</tr>
 			{{/each}}
 		</tbody>
 
@@ -55,7 +55,7 @@
         </form>
 
 	</table>
-	
+
 	<!--Horizontal Site Directory List-->
 	<div id="siteList">
 		<a href="home">Home</a><br>
@@ -65,16 +65,15 @@
 		<a href="team-league_table">Team-League Table</a><br>
 		<a href="sponsor_table">Sponsor Table</a><br>
 		<a href="player_table">Player Table</a><br>
-		<a href="search">Search Queries</a><br>	
 	</div>
 	<br>
-	
+
 	<!--Closing Remarks-->
 	<br>
 	<div id="copyright"><b>OSU 340 - Cedric Eicher - Lennard Gorter - Group 18 - All Rights Reserved</b></div>
-	
+
 	<!--JavaScript Call-->
 	<script src="js/delete_league.js"></script>
-	
+
 	</body>
 </html>

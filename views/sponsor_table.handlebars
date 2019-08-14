@@ -14,26 +14,26 @@
 		<img id="futbol" src="images/futbol.PNG" alt="futbol">
 	</div>
 	<br>
-	
+
 	<!--Showing Tables-->
 	<!--Sponsor-->
 	<br></br><br></br>
 	<span id="tableTitle">SPONSOR TABLE</span>
 	<table>
-		<thead> 
+		<thead>
 			<th>SponsorId</th>
-			<th>Name</th> 
+			<th>Name</th>
 			<th>Revenue</th>
 			<th>Delete</th>
-		</thead> 
-		<tbody> 
-			{{#each sponsor}} 
-			<tr> 
+		</thead>
+		<tbody>
+			{{#each sponsor}}
+			<tr>
 				<td>{{sponsorId}}</td>
-				<td>{{name}}</td> 
+				<td>{{name}}</td>
 				<td>{{revenue}}</td>
 				<td><button onclick="deleteSponsor({{sponsorId}})">Delete</button></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
-			</tr> 
+			</tr>
 			{{/each}}
 		</tbody>
 
@@ -45,7 +45,7 @@
         </form>
 
 	</table>
-	
+
 	<!--Horizontal Site Directory List-->
 	<div id="siteList">
 		<a href="home">Home</a><br>
@@ -55,16 +55,15 @@
 		<a href="team-league_table">Team-League Table</a><br>
 		<a href="sponsor_table">Sponsor Table</a><br>
 		<a href="player_table">Player Table</a><br>
-		<a href="search">Search Queries</a><br>	
 	</div>
 	<br>
-	
+
 	<!--Closing Remarks-->
 	<br>
 	<div id="copyright"><b>OSU 340 - Cedric Eicher - Lennard Gorter - Group 18 - All Rights Reserved</b></div>
-	
+
 	<!--JavaScript Call-->
 	<script src="js/delete_sponsor.js"></script>
-	
+
 	</body>
 </html>

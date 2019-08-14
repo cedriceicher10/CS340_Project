@@ -1,7 +1,7 @@
 module.exports = function(){
 	var express = require('express');
     var router = express.Router();
-	
+
 	var mysql = require('./dbcon.js');
 
 	function getTeams(res, mysql, context, complete){
@@ -27,7 +27,7 @@ module.exports = function(){
 	}
 
 	function getTeamLeagues(res, mysql, context, complete){
-		mysql.pool.query("SELECT * FROM team_league", function(error, results, fields){
+		mysql.pool.query("SELECT team_league.team_leagueId AS id, team.name AS teamName, league.name AS leagueName FROM team_league INNER JOIN team ON team.teamId = team_league.teamId INNER JOIN league ON league.leagueId = team_league.leagueId", function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
 				res.end();
@@ -51,12 +51,13 @@ module.exports = function(){
 			}
 		});
 	});
-	
+
 	// Justin Add [Start]
-	router.delete('/:team_leagueId', function(req, res){
+	router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM team_league WHERE team_leagueId = ?";
-        var inserts = [req.params.team_leagueId];
+        var inserts = [req.params.id];
+				console.log(req.params.id);
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
@@ -84,6 +85,6 @@ module.exports = function(){
 			}
 		}
 	});
-	
+
 	return router;
 }();

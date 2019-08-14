@@ -1,11 +1,21 @@
 module.exports = function(){
 	var express = require('express');
-    var router = express.Router();
-	
+  var router = express.Router();
 	var mysql = require('./dbcon.js');
 
 	function getPlayers(res, mysql, context, complete){
 		mysql.pool.query("SELECT * FROM player", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.player = results;
+			complete();
+		});
+	}
+
+	function getPlayersFiltered(res, mysql, context, complete){
+		mysql.pool.query("SELECT * FROM player WHERE playerId = " + context.playerFiltered, function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
 				res.end();
@@ -36,7 +46,7 @@ module.exports = function(){
 			complete();
 		});
 	}
-	
+
 	router.post('/', function(req, res){
 		var mysql = req.app.get('mysql');
 		var sql = "INSERT INTO player (teamId, fname, lname, position, appearances, goals, assists, height, birthdate, nationality, sponsorId) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -51,7 +61,7 @@ module.exports = function(){
 			}
 		});
 	});
-	
+
 	// Justin Add [Start]
 	router.delete('/:playerId', function(req, res){
         var mysql = req.app.get('mysql');
@@ -75,16 +85,33 @@ module.exports = function(){
 		var context = {};
 		context.jsscripts = ["delete_player.js"]; // Justin add
 		var mysql = req.app.get('mysql');
-		getPlayers(res, mysql, context, complete);
-		getTeams(res, mysql, context, complete);
-		getSponsors(res, mysql, context, complete);
-		function complete(){
-			callbackCount++;
-			if (callbackCount >= 3){
-				res.render('player_table', context);
+		var resSize = Object.keys(req.query).length;
+		// Filter has been triggered
+		if (resSize > 0) {
+			context.playerFiltered = req.query.playerId;
+			getPlayersFiltered(res, mysql, context, complete);
+			getTeams(res, mysql, context, complete);
+			getSponsors(res, mysql, context, complete);
+			function complete(){
+				callbackCount++;
+				if (callbackCount >= 3){
+					res.render('player_table', context);
+				}
+			}
+		}
+		// Display as normal
+		else {
+			getPlayers(res, mysql, context, complete);
+			getTeams(res, mysql, context, complete);
+			getSponsors(res, mysql, context, complete);
+			function complete(){
+				callbackCount++;
+				if (callbackCount >= 3){
+					res.render('player_table', context);
+				}
 			}
 		}
 	});
-	
+
 	return router;
 }();

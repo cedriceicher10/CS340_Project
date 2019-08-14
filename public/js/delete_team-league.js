@@ -1,7 +1,7 @@
 // Justin Add [Start]
-function deleteTeamLeague(team_leagueId){
+function deleteTeamLeague(id){
     $.ajax({
-        url: '/team-league_table/' + team_leagueId,
+        url: '/team-league_table/' + id,
         type: 'DELETE',
         success: function(result){
             window.location.reload(true);

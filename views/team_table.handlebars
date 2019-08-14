@@ -14,34 +14,34 @@
 		<img id="futbol" src="images/futbol.PNG" alt="futbol">
 	</div>
 	<br>
-	
-	<!--Showing Tables-->	
+
+	<!--Showing Tables-->
 	<!--Team-->
 	<br></br><br></br>
 	<span id="tableTitle">TEAM TABLE</span>
 	<table>
-		<thead> 
+		<thead>
 			<th>TeamId</th>
-			<th>Name</th> 
+			<th>Name</th>
 			<th>City</th>
-			<th>Stadium</th> 
+			<th>Stadium</th>
 			<th>Standing</th>
-			<th>Games Played</th> 
+			<th>Games Played</th>
 			<th>Points</th>
 			<th>Delete</th>
-		</thead> 
-		<tbody> 
-			{{#each team}} 
-			<tr> 
+		</thead>
+		<tbody>
+			{{#each team}}
+			<tr>
 				<td>{{teamId}}</td>
-				<td>{{name}}</td> 
+				<td>{{name}}</td>
 				<td>{{city}}</td>
 				<td>{{stadium}}</td>
 				<td>{{standing}}</td>
 				<td>{{gamesPlayed}}</td>
 				<td>{{points}}</td>
 				<td><button onclick="deleteTeam({{teamId}})">Delete</button></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
-			</tr> 
+			</tr>
 			{{/each}}
 		</tbody>
 
@@ -49,7 +49,7 @@
 			<br>Insert a new Team!<br>
         	<br>Team Name: <input type="text" name="name"><br>
         	City: <input type="text" name="city"><br>
-			Select a Stadium: <select name="stadiumId">
+			Select a Stadium: <select name="stadium">
 				{{#each stadiums}}
 				<option value="{{stadiumId}}">{{name}}</option>
 				{{/each}}
@@ -60,7 +60,7 @@
         	<input type="submit" value="Submit">
         </form>
 	</table>
-	
+
 	<!--Horizontal Site Directory List-->
 	<div id="siteList">
 		<a href="home">Home</a><br>
@@ -70,16 +70,15 @@
 		<a href="team-league_table">Team-League Table</a><br>
 		<a href="sponsor_table">Sponsor Table</a><br>
 		<a href="player_table">Player Table</a><br>
-		<a href="search">Search Queries</a><br>		
 	</div>
 	<br>
-	
+
 	<!--Closing Remarks-->
 	<br>
 	<div id="copyright"><b>OSU 340 - Cedric Eicher - Lennard Gorter - Group 18 - All Rights Reserved</b></div>
-	
+
 	<!--JavaScript Call-->
 	<script src="js/delete_team.js"></script>
-	
+
 	</body>
 </html>

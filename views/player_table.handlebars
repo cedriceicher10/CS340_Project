@@ -14,33 +14,33 @@
 		<img id="futbol" src="images/futbol.PNG" alt="futbol">
 	</div>
 	<br>
-	
-	<!--Showing Tables-->	
+
+	<!--Showing Tables-->
 	<!--Player-->
 	<br></br><br></br>
 	<span id="tableTitle">PLAYER TABLE</span>
 	<table>
-		<thead> 
+		<thead>
 			<th>PlayerId</th>
-			<th>TeamId</th> 
+			<th>TeamId</th>
 			<th>First Name</th>
-			<th>Last Name</th> 
-			<th>Position</th> 
+			<th>Last Name</th>
+			<th>Position</th>
 			<th>Appearances</th>
-			<th>Goals</th> 
-			<th>Assists</th> 
-			<th>Height</th> 
-			<th>Birth Date</th> 
-			<th>Nationality</th> 
+			<th>Goals</th>
+			<th>Assists</th>
+			<th>Height</th>
+			<th>Birth Date</th>
+			<th>Nationality</th>
 			<th>SponsorId</th>
 			<th>Delete</th>
 			<th>Edit</th>
-		</thead> 
-		<tbody> 
-			{{#each player}} 
-			<tr> 
+		</thead>
+		<tbody>
+			{{#each player}}
+			<tr>
 				<td>{{playerId}}</td>
-				<td>{{teamId}}</td> 
+				<td>{{teamId}}</td>
 				<td>{{fname}}</td>
 				<td>{{lname}}</td>
 				<td>{{position}}</td>
@@ -53,34 +53,52 @@
 				<td>{{sponsorId}}</td>
 				<td><button onclick="deletePlayer({{playerId}})">Delete</button></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
 				<td><a href="/player/{{playerId}}">Update</a></td> <!--Taken directly from Justin's code. Needs tieing to actual JS action-->
-			</tr> 
+			</tr>
 			{{/each}}
 		</tbody>
 			<form id="insertplayer" action="/player_table" method="post">
 				<br>Insert a new Player!<br>
-				Select a Team: <select name="teamId">
-					{{#each teams}}
-					<option value="{{teamId}}">{{name}}</option>
-					{{/each}}
+					Select a Team: <select name="teamId">
+						{{#each teams}}
+						<option value="{{teamId}}">{{name}}</option>
+						{{/each}}
+					</select><br>
+					First Name: <input type="text" name="fname"><br>
+					Last Name: <input type="text" name="lname"><br>
+					Position: <input type="text" name="position"><br>
+					Appearances: <input type="number" name="appearances"><br>
+					Goals: <input type="number" name="goals"><br>
+					Assists: <input type="number" name="assists"><br>
+					Height (in inches): <input type="number" name="height"><br>
+					Birthdate: <input type="date" name="birthdate"><br>
+					Nationality: <input type="text" name="nationality"><br>
+					Select a Sponsor: <select name="sponsorId">
+						{{#each sponsors}}
+						<option value="{{sponsorId}}">{{name}}</option>
+						{{/each}}
 				</select><br>
-				First Name: <input type="text" name="fname"><br>
-				Last Name: <input type="text" name="lname"><br>
-				Position: <input type="text" name="position"><br>
-				Appearances: <input type="number" name="appearances"><br>
-				Goals: <input type="number" name="goals"><br>
-				Assists: <input type="number" name="assists"><br>
-				Height (in inches): <input type="number" name="height"><br>
-				Birthdate: <input type="date" name="birthdate"><br>
-				Nationality: <input type="text" name="nationality"><br>
-				Select a Sponsor: <select name="sponsorId">
-					{{#each sponsors}}
-					<option value="{{sponsorId}}">{{name}}</option>
-					{{/each}}
-				</select><br>
-			<input type="submit" value="Submit">
-		</form>
+				<input type="submit" value="Submit">
+			</form>
+
+			<!--Cedric Filter Add [Start]-->
+			<br></br>
+			<form id="filter_player" action="/player_table" method="get">
+					<br>Filter the table!<br>
+					Filter by Player Name: <select name="playerId">
+						{{#each player}}
+							<option value="{{playerId}}">{{fname}} {{lname}}</option>
+						{{/each}}
+					</select>
+				  <input type="submit" value="Filter">
+			</form>
+			<form action="player_table">
+					Reset Table:<input type="submit" value="Reset Table">
+			</form>
+			<br><br>
+			<!--Cedric Filter Add [End]-->
+
 	</table>
-	
+
 	<!--Horizontal Site Directory List-->
 	<div id="siteList">
 		<a href="home">Home</a><br>
@@ -90,16 +108,15 @@
 		<a href="team-league_table">Team-League Table</a><br>
 		<a href="sponsor_table">Sponsor Table</a><br>
 		<a href="player_table">Player Table</a><br>
-		<a href="search">Search Queries</a><br>	
 	</div>
 	<br>
-	
+
 	<!--Closing Remarks-->
 	<br>
 	<div id="copyright"><b>OSU 340 - Cedric Eicher - Lennard Gorter - Group 18 - All Rights Reserved</b></div>
-	
+
 	<!--JavaScript Call-->
 	<script src="js/delete_player.js"></script>
-	
+
 	</body>
 </html>
