@@ -57,7 +57,6 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM team_league WHERE team_leagueId = ?";
         var inserts = [req.params.id];
-				console.log(req.params.id);
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
